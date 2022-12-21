@@ -1,25 +1,84 @@
 #include <msp430.h>
 
-//Photoresistor
-        P1DIR &= ~BIT1; // P1.3 becomes input
-        P1REN |= BIT1;
-        P1OUT |= BIT1;
 
-void Sensor3() ///Photoresistor sensor
+
+
+
+/**
+
+* main.c
+
+*/
+
+
+
+unsigned int a;
+
+int i = 0;
+
+#define BUTTON BIT1
+
+int main(void)
+
 {
-            if((P1IN & BUTTON) == 0x08){
-            //_delay_cycles(5000);
-            if((P1IN & BUTTON) == 0x08){
-                y=0;
-                if(y == 0){
-                light=0;
-                }
-                else {
-                light=1;
-                }}
+
+
+
+    WDTCTL = WDTPW | WDTHOLD;                 // Stop WDT
+
+    P1DIR &= ~BIT1; // P1.1 reads from sensor
+
+    P1REN |= BIT1;
+
+    P1OUT |= BIT1;
+
+    PM5CTL0 &= ~LOCKLPM5;
+
+
+
+    while(1){
+
+
+        if((P1IN & BUTTON) == 0x0){
+
+        _delay_cycles(5000);
+
+        if((P1IN & BUTTON) == 0x0){
+
+            i=1;
+
+            if(i == 1){
+
+            a=1;
+
             }
-            while((P1IN & BUTTON) == 0x08);
-            y=1;
-            light=1;
+
+            else {
+
+            a=0;
+
+            }}
+
 
         }
+
+        while((P1IN & BUTTON) == 0x0);
+
+        i=0;
+
+        a=0;
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+}
