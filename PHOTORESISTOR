@@ -1,4 +1,9 @@
+#include <msp430.h>
 
+//Photoresistor
+        P1DIR &= ~BIT1; // P1.3 becomes input
+        P1REN |= BIT1;
+        P1OUT |= BIT1;
 
 void Sensor3() ///Photoresistor sensor
 {
