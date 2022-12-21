@@ -1,1 +1,20 @@
 
+
+void Sensor3() ///Photoresistor sensor
+{
+            if((P1IN & BUTTON) == 0x08){
+            //_delay_cycles(5000);
+            if((P1IN & BUTTON) == 0x08){
+                y=0;
+                if(y == 0){
+                light=0;
+                }
+                else {
+                light=1;
+                }}
+            }
+            while((P1IN & BUTTON) == 0x08);
+            y=1;
+            light=1;
+
+        }
